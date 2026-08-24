@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Liberal Arts Research Initiative — Penn State</title>
+<meta name="description" content="Projects from the Digital Liberal Arts Research Initiative and Digital Pedagogy Institute at Penn State's College of the Liberal Arts.">
+
+<!--
+  FONT NOTE:
+  Penn State's approved digital font stack is Proxima Nova / Proxima Nova
+  Condensed / Serifa / Roboto / Roboto Slab / Roboto Condensed.
+  Proxima Nova and Serifa are licensed fonts, normally served through an
+  Adobe Fonts (Typekit) kit — this page does not have a kit ID, so it uses
+  the Roboto family, which is also on the approved list and is free.
+
+  To switch to Proxima Nova / Serifa: paste your Adobe Fonts kit <link>
+  tag below (from fonts.adobe.com), then update the font-family values in
+  the CSS variables in :root.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Penn State Pennsylvania Palette (official brand colors) */
+    --nittany-navy: #001E44;
+    --beaver-blue: #1E407C;
+    --penn-sky: #009CDE;
+    --limestone: #91959C;
+    --white: #FFFFFF;
+    --off-white: #F5F6F7;
+    --border: #DADDE1;
+    --text: #1A1D22;
+    --text-soft: #4B4F56;
+
+    /* Type roles */
+    --font-display: 'Roboto Slab', serif;      /* stand-in for Serifa */
+    --font-condensed: 'Roboto Condensed', sans-serif; /* stand-in for Proxima Nova Condensed */
+    --font-body: 'Roboto', sans-serif;          /* stand-in for Proxima Nova */
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--beaver-blue); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--penn-sky);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ===== Top identity bar ===== */
+  .id-bar {
+    background: var(--nittany-navy);
+    color: var(--white);
+    padding: 14px 0;
+    border-bottom: 4px solid var(--penn-sky);
+  }
+
+  .id-bar .wrap {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  /* Logo placeholder boxes — replace the <img> src attributes below with
+     your actual logo files once added to the repo (e.g. /assets/logo-cla.svg) */
+  .logo-slot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+  }
+
+  .logo-slot img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  .logo-fallback {
+    height: 40px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-condensed);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px dashed rgba(255,255,255,0.5);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .id-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* ===== Hero ===== */
+  header.hero {
+    padding: 64px 0 48px;
+    background: var(--off-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-family: var(--font-condensed);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--beaver-blue);
+    margin-bottom: 16px;
+  }
+
+  h1.title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.12;
+    color: var(--nittany-navy);
+    margin: 0 0 18px;
+    max-width: 780px;
+  }
+
+  .lede {
+    max-width: 640px;
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    margin: 0 0 6px;
+  }
+
+  .lede-es {
+    max-width: 640px;
+    font-size: 0.98rem;
+    color: var(--limestone);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .institution {
+    margin-top: 26px;
+    font-family: var(--font-condensed);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+  }
+
+  .scope-note {
+    margin-top: 20px;
+    max-width: 640px;
+    font-size: 14px;
+    color: var(--text-soft);
+    padding: 12px 16px;
+    background: var(--white);
+    border-left: 3px solid var(--penn-sky);
+  }
+
+  .scope-note a {
+    font-weight: 700;
+  }
+
+  /* ===== Featured project ===== */
+  section.featured {
+    padding: 56px 0;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .section-heading h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--nittany-navy);
+    margin: 0;
+  }
+
+  .section-heading .status {
+    font-family: var(--font-condensed);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--limestone);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .feature-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--penn-sky);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .feature-card .content {
+    padding: 34px 32px;
+  }
+
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--nittany-navy);
+    margin: 0 0 6px;
+  }
+
+  .feature-card .subtitle {
+    font-family: var(--font-condensed);
+    font-size: 14px;
+    color: var(--beaver-blue);
+    font-weight: 500;
+    margin: 0 0 18px;
+  }
+
+  .feature-card p.desc {
+    color: var(--text-soft);
+    max-width: 640px;
+    margin: 0 0 22px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .tag {
+    font-family: var(--font-condensed);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--beaver-blue);
+    background: rgba(30,64,124,0.07);
+    border: 1px solid rgba(30,64,124,0.2);
+    border-radius: 20px;
+    padding: 4px 11px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    background: var(--beaver-blue);
+    padding: 12px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .btn:hover, .btn:focus-visible {
+    background: var(--nittany-navy);
+  }
+
+  .more-note {
+    margin-top: 30px;
+    padding: 18px 20px;
+    background: var(--off-white);
+    border: 1px dashed var(--border);
+    border-radius: 3px;
+    font-family: var(--font-condensed);
+    font-size: 13.5px;
+    color: var(--text-soft);
+  }
+
+  /* ===== About ===== */
+  section.about {
+    padding: 44px 0 56px;
+    border-top: 1px solid var(--border);
+  }
+
+  section.about h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--nittany-navy);
+    margin: 0 0 12px;
+  }
+
+  section.about p {
+    max-width: 660px;
+    color: var(--text-soft);
+    margin: 0;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--nittany-navy);
+    color: rgba(255,255,255,0.75);
+    padding: 26px 0;
+    font-family: var(--font-condensed);
+    font-size: 12.5px;
+  }
+
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: space-between;
+  }
+
+  footer a { color: var(--white); }
+
+  @media (max-width: 560px) {
+    header.hero { padding: 46px 0 36px; }
+    section.featured { padding: 40px 0; }
+    .feature-card .content { padding: 26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="id-bar">
+  <div class="wrap">
+    <!-- Replace with: <img src="/assets/logo-liberal-arts.svg" alt="Penn State College of the Liberal Arts"> -->
+    <div class="logo-slot">
+      <span class="logo-fallback">College of the Liberal Arts logo</span>
+    </div>
+    <div class="id-divider"></div>
+    <!-- Replace with: <img src="/assets/logo-dla.svg" alt="Digital Liberal Arts Research Initiative"> -->
+    <div class="logo-slot">
+      <span class="logo-fallback">DLA Research Initiative logo</span>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Digital Liberal Arts · Penn State</div>
+    <h1 class="title">Projects from the Digital Liberal Arts Research Initiative</h1>
+    <p class="lede">Research, exhibits, and open pedagogy from the Digital Liberal Arts Research Initiative and the Digital Pedagogy Institute at Penn State's College of the Liberal Arts.</p>
+    <div class="institution">College of the Liberal Arts · Penn State</div>
+    <p class="scope-note">This page lists only projects hosted on GitHub. To learn more about the full work of the Office of Digital Pedagogies and Initiatives, visit <a href="https://digital.la.psu.edu">digital.la.psu.edu</a>.</p>
+  </div>
+</header>
+
+<section class="featured">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>Featured project</h2>
+      <span class="status">Live</span>
+    </div>
+
+    <div class="feature-card">
+      <div class="content">
+        <h3>Centre County History Otherwise</h3>
+        <p class="subtitle">A digital oral history exhibit</p>
+        <p class="desc">Documenting the lives of Italian American women in Central Pennsylvania through oral history, built with the CollectionBuilder framework.</p>
+        <div class="tags">
+          <span class="tag">Oral history</span>
+          <span class="tag">CollectionBuilder</span>
+          <span class="tag">Centre County</span>
+        </div>
+        <a class="btn" href="https://dla-psu.github.io/ccho-italianamericanwomen/">Visit the exhibit →</a>
+      </div>
+    </div>
+
+    <div class="more-note">
+      More projects from the Digital Liberal Arts Research Initiative will be added to this page as they're released.
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <h2>About this page</h2>
+    <p>This is the landing site for projects published under the DLA-PSU GitHub organization. Each project links out to its own site and repository.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Digital Liberal Arts Research Initiative — Penn State College of the Liberal Arts</span>
+    <span><a href="https://github.com/dla-psu">github.com/dla-psu</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
